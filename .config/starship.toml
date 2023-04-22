@@ -1,0 +1,45 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+
+[battery]
+charging_symbol = "󰂄 "
+discharging_symbol = "󱃍 "
+
+[c]
+format = "[$symbol($version )]($style)"
+symbol = " "
+
+[container]
+format = '[$symbol \[$name\]]($style)'
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+symbol = " "
+
+[golang]
+format = "[$symbol($version )]($style)"
+symbol = " "
+
+[java]
+format = "[${symbol}(${version} )]($style)"
+symbol = " "
+
+[package]
+format = "[$symbol$version]($style) "
+symbol = " "
+
+[php]
+format = "[$symbol($version )]($style)"
+symbol = " "
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+symbol = " "
+
+[rust]
+format = "[$symbol($version )]($style)"
+symbol = "󱘗 "
+
+
+
+
