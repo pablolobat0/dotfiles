@@ -30,15 +30,16 @@
 # Qtile base
 
 from libqtile import hook
-from libqtile import bar, layout
+from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 # Qtile extras
-from qtile_extras.widget.decorations import RectDecoration
-from qtile_extras.widget.decorations import PowerLineDecoration
-from qtile_extras.bar import Bar
-from qtile_extras import widget
+#from qtile_extras.widget.decorations import RectDecoration
+#from qtile_extras.widget.decorations import PowerLineDecoration
+#from qtile_extras.bar import Bar
+#from qtile_extras import widget
+
 
 # Autostart
 from os import path
@@ -94,6 +95,10 @@ keys = [
     # Redshift
     Key([mod], "r", lazy.spawn("redshift -O 2400")),
     Key([mod, "shift"], "r", lazy.spawn("redshift -x")),
+    # Shutdown menu
+    Key([mod], "q", lazy.spawn("shutDownMenu.sh")),
+    # Networks menu
+    Key([mod], "n", lazy.spawn("networkMenu.sh")),
 
     #VOLUME AND BRIGHTNESS
 
@@ -102,14 +107,12 @@ keys = [
         "pactl set-sink-volume @DEFAULT_SINK@ -5%"
     )),
     Key([], "XF86AudioRaiseVolume", lazy.spawn(
-        "pactl set-sink-volume @DEFAULT_SINK@ +5%"
-    )),
+        "pactl set-sink-volume @DEFAULT_SINK@ +5%")),
     Key([], "XF86AudioMute", lazy.spawn(
-        "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-    )),
+        "pactl set-sink-mute @DEFAULT_SINK@ toggle")),
      # Brightness
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
 ]
 
 # Groups icons: nf-cod-globe, nf-md-microsoft_visual_studio_code, nf-dev-terminal, nf-fa-stack_overflow, nf-fa-folder, nf-fa-youtube_play
@@ -153,44 +156,6 @@ widget_defaults = dict(
     padding=3,
 )
 
-decoration_group = {
-    "decorations": [
-        RectDecoration(
-            filled = True,
-            radius = 10,
-            use_widget_background = True,
-        )
-    ],
-}
-
-decoration_group_borders_left = {
-    "decorations": [
-        RectDecoration(
-            filled = True,
-            radius = [10, 0, 0, 10],
-            use_widget_background = True,
-        )
-    ],
-}
-
-decoration_group_borders_right = {
-    "decorations": [
-        RectDecoration(
-            filled = True,
-            radius = [0, 10, 10, 0],
-            use_widget_background = True,
-        )
-    ],
-}
-
-powerline = {
-    "decorations": [
-        PowerLineDecoration(
-            path = "arrow_right", # arrow_right, rounded_left(right), forward(back)_slash, zig_zag 
-            size = 10
-        )
-    ]
-}
 
 extension_defaults = widget_defaults.copy()
 
@@ -201,7 +166,6 @@ def init_widgets_list():
                     background=["#338b85","#338b85"],
                     foreground=["#3e4144","#3e4144"],
                     fontsize=22,
-                    **decoration_group
                 ),
                 widget.TextBox(
                     text = "󰇙", # nf-md-dots_vertical
@@ -213,7 +177,6 @@ def init_widgets_list():
                     linewidth=0,
                     padding=10,
                     background=["#5dc1b9","#5dc1b9"],
-                    **decoration_group_borders_left
                 ),
                 widget.GroupBox(
                      foreground =["#ffffff", "#ffffff"],
@@ -241,7 +204,6 @@ def init_widgets_list():
                     linewidth=0,
                     padding=10,
                     background=["#5dc1b9","#5dc1b9"],
-                    **decoration_group_borders_right
                 ),
                 widget.WindowName(
                      background=["#3e4144", "#3e4144"],
@@ -254,7 +216,6 @@ def init_widgets_list():
                     linewidth=0,
                     padding=10,
                     background=["#d5ffff","#d5ffff"],
-                    **decoration_group_borders_left
                 ),
                 widget.Systray(
                     background=["#d5ffff","#d5ffff"],
@@ -263,28 +224,26 @@ def init_widgets_list():
                     linewidth=0,
                     padding=10,
                     background=["#9ce0db","#9ce0db"],
-                    **decoration_group_borders_left
                 ),
                 widget.Sep(
                     linewidth=0,
                     padding=10,
                     background=["#d5ffff","#d5ffff"],
-                    **powerline
                 ),
-                widget.Memory(
-                    background=["#9ce0db", "#9ce0db"],
-                    foreground =["#3e4144", "#3e4144"],
-                    format = '󰍛{MemUsed: .2f}{mm}', # nf-md-memory
-                    measure_mem = "G",
-                    update_interval=5,
+                #widget.Memory(
+                   # background=["#9ce0db", "#9ce0db"],
+                   # foreground =["#3e4144", "#3e4144"],
+                  #  format = '󰍛{MemUsed: .2f}{mm}', # nf-md-memory
+                 #   measure_mem = "G",
+                #    update_interval=5,
 
-                ),
-                widget.CPU(
-                    background=["#9ce0db", "#9ce0db"],
-                    foreground =["#3e4144", "#3e4144"],
-                    format=' {load_percent}%', # nf-fa-microchip
-                    update_interval=5,
-                ),
+               # ),
+               # widget.CPU(
+                   # background=["#9ce0db", "#9ce0db"],
+                   # foreground =["#3e4144", "#3e4144"],
+                  #  format=' {load_percent}%', # nf-fa-microchip
+                 #   update_interval=5,
+                #),
                 widget.Battery( 
                     background=["#9ce0db", "#9ce0db"],
                     foreground =["#3e4144", "#3e4144"],
@@ -293,7 +252,7 @@ def init_widgets_list():
                     full_char = " 󰁹", # nf-md-battery
                     format = '{char} {percent:2.0%} ',
                     notify_below = 0.98,
-                    **powerline,
+                    #**powerline,
                 ),
                 widget.CheckUpdates(
                     background=["#9ce0db", "#9ce0db"],
@@ -304,11 +263,10 @@ def init_widgets_list():
                     display_format='󰉍 {updates} ', # nf-md-folder_download
                     update_interval=1800,
                     custom_command='checkupdates',
-                    # mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(terminal + ' -e sudo pacman -Syu')},
-                    **powerline,
+                    # mouse_callbacks = {'Button1': lambda: lazy.spawn("-e sudo pacman -Syu")},
                 ),
                 widget.CurrentLayoutIcon(
-                     scale=0.7,
+                     scale=0.65,
                      background=["#5dc1b9","#5dc1b9"],
                      foreground =["#3e4144", "#3e4144"],
                 ),
@@ -320,7 +278,6 @@ def init_widgets_list():
                     linewidth=0,
                     padding=10,
                     background=["#5dc1b9","#5dc1b9"],
-                    **decoration_group_borders_right
                 ),
                 widget.TextBox(
                     text = "󰇙", # nf-md-dots_vertical
@@ -332,15 +289,14 @@ def init_widgets_list():
                     background=["#338b85","#338b85"],
                     foreground=["#3e4144","#3e4144"],
                     format=" 󰸗 %d/%m/%Y 󰥔 %H:%M ", # nf-md-calendar_month, nf-md-clock
-                    **decoration_group
                     ),
             ]
     return widget_list
 
 def init_widgets_screen1():
     widgets_screen1 = init_widgets_list()
-    del widgets_screen1[12] 
-    del widgets_screen1[8] # remove battery icon
+    del widgets_screen1[10] 
+    del widgets_screen1[9] # remove battery icon
     return widgets_screen1    
 
 def init_widgets_screen2():
