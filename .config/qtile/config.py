@@ -43,6 +43,7 @@ from libqtile.lazy import lazy
 
 # Autostart
 from os import path
+import json
 import subprocess 
 
 @hook.subscribe.startup_once
@@ -150,11 +151,38 @@ layouts = [
     # layout.Zoomy(),
 ]
 
+# Get the path of the current Qtile config file
+config_dir = path.dirname(path.abspath(__file__))
+
+# Construct the path to the JSON file within the folder
+json_file_path = path.join(config_dir, "themes", "nord.json")
+
+with open(json_file_path, "r") as file:
+     colors = json.load(file)
+
 widget_defaults = dict(
-    font="UbuntuMono Nerd Font",
-    fontsize=16,
-    padding=3,
+    font = "UbuntuMono Nerd Font",
+    fontsize = 15,
+    padding = 3,
 )
+
+def separator(foreground, background, direction, size = 30, pad = -0.1):
+    if direction == "left":
+        return widget.TextBox(
+                    text = "", # nf-ple-left_half_circle_thick
+                    foreground = [foreground,foreground],
+                    background = [background,background],
+                    fontsize = size,
+                    padding = pad
+                )
+    elif direction == "right":
+                return widget.TextBox(
+                    text = "", # nf-ple-right_half_circle_thick
+                    foreground = [foreground,foreground],
+                    background = [background,background],
+                    fontsize = size,
+                    padding = pad
+                )
 
 
 extension_defaults = widget_defaults.copy()
@@ -163,72 +191,37 @@ def init_widgets_list():
     widget_list = [
                 widget.TextBox(
                     text = "   ", # nf-linux-archlinux
-                    background=["#338b85","#338b85"],
-                    foreground=["#3e4144","#3e4144"],
-                    fontsize=22,
+                    foregorund = ["#338b85","#338b85"],
+                    background = colors["bar"],
+                    fontsize = 22,
                 ),
-                widget.TextBox(
-                    text = "󰇙", # nf-md-dots_vertical
-                    background=["#3e4144","#3e4144"],
-                    foreground=["#65727c","#65727c"],
-                    fontsize=18,
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    padding=10,
-                    background=["#5dc1b9","#5dc1b9"],
-                ),
+                separator("#5E81AC", "#3e4144", "left"),
                 widget.GroupBox(
-                     foreground =["#ffffff", "#ffffff"],
-                     background=["#5dc1b9", "#5dc1b9"],
-                     font='UbuntuMono Nerd Font',
-                     fontsize=16,
-                     margin_y=3,
-                     margin_x=0,
-                     padding_y=8,
-                     padding_x=6,
-                     borderwidth=1,
-                     active=["#3e4144", "#3e4144"],
-                     inactive=["#65727c", "#65727c"],
-                     rounded=True,
-                     highlight_method='block',
-                     urgent_alert_method='block',
-                     urgent_border=["#b48ead", "#b48ead"],
-                     this_current_screen_border=["#9ce0db", "#9ce0db"],
-                     this_screen_border=["#9ce0db", "#9ce0db"],
-                     other_current_screen_border=["#5dc1b9", "#5dc1b9"],
-                     other_screen_border=["#5dc1b9", "#5dc1b9"],
-                     disable_drag=True,
+                     foreground = colors["text"],
+                     background = colors["color1"],
+                     fontsize = 16,
+                     margin_y = 3,
+                     margin_x = 0,
+                     padding_y = 8,
+                     padding_x = 6,
+                     borderwidth = 1,
+                     active = colors["active"],
+                     inactive = colors["inactive"],
+                     rounded = True,
+                     highlight_method = 'block',
+                     urgent_alert_method = 'block',
+                     urgent_border = colors["urgent"],
+                     this_current_screen_border = colors["this_screen"],
+                     this_screen_border = colors["this_screen"],
+                     other_current_screen_border = colors["other_screen"],
+                     other_screen_border = colors["other_screen"],
+                     disable_drag = True,
                  ),
-                widget.Sep(
-                    linewidth=0,
-                    padding=10,
-                    background=["#5dc1b9","#5dc1b9"],
-                ),
+                separator("#5E81AC", "#3e4144", "right"),
                 widget.WindowName(
-                     background=["#3e4144", "#3e4144"],
-                     foreground = ["#5dc1b9", "#5dc1b9"],
-                     font='mononoki Nerd Font',
-                     fontsize=12,
+                     background = colors["bar"],
+                     foreground = colors["color2"],
                      format = ' {state}{name}',
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    padding=10,
-                    background=["#d5ffff","#d5ffff"],
-                ),
-                widget.Systray(
-                    background=["#d5ffff","#d5ffff"],
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    padding=10,
-                    background=["#9ce0db","#9ce0db"],
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    padding=10,
-                    background=["#d5ffff","#d5ffff"],
                 ),
                 #widget.Memory(
                    # background=["#9ce0db", "#9ce0db"],
@@ -244,75 +237,66 @@ def init_widgets_list():
                   #  format=' {load_percent}%', # nf-fa-microchip
                  #   update_interval=5,
                 #),
-                widget.Battery( 
-                    background=["#9ce0db", "#9ce0db"],
-                    foreground =["#3e4144", "#3e4144"],
-                    charge_char = " 󰂄", # nf-md-battery_charging
-                    discharge_char = " 󱟞", # nf-md-battery_arrow_down
-                    full_char = " 󰁹", # nf-md-battery
-                    format = '{char} {percent:2.0%} ',
-                    notify_below = 0.98,
-                    #**powerline,
-                ),
+                # widget.Battery( 
+                #     background=["#9ce0db", "#9ce0db"],
+                #     foreground =["#3e4144", "#3e4144"],
+                #     charge_char = " 󰂄", # nf-md-battery_charging
+                #     discharge_char = " 󱟞", # nf-md-battery_arrow_down
+                #     full_char = " 󰁹", # nf-md-battery
+                #     format = '{char} {percent:2.0%} ',
+                #     notify_below = 0.98,
+                # ),
+                separator("#8FBCBB", "#3e4144", "left"),
                 widget.CheckUpdates(
-                    background=["#9ce0db", "#9ce0db"],
-                    foreground =["#3e4144", "#3e4144"],
-                    colour_have_updates=["#3e4144","#3e4144"],
-                    colour_no_updates=["#65727c","#65727c"],
-                    no_update_string='󰉍 0',
-                    display_format='󰉍 {updates} ', # nf-md-folder_download
-                    update_interval=1800,
-                    custom_command='checkupdates',
+                    background = colors["color3"],
+                    foreground = colors["text"],
+                    colour_have_updates = colors["text"],
+                    colour_no_updates = colors["inactive"],
+                    fontsize = 16,
+                    no_update_string = ' 󰉍 0 ',
+                    display_format = ' 󰉍 {updates}  ', # nf-md-folder_download
+                    update_interval = 1800,
+                    custom_command = 'checkupdates',
                     # mouse_callbacks = {'Button1': lambda: lazy.spawn("-e sudo pacman -Syu")},
                 ),
+                separator("#81A1C1", "#8FBCBB", "left"),
                 widget.CurrentLayoutIcon(
-                     scale=0.65,
-                     background=["#5dc1b9","#5dc1b9"],
-                     foreground =["#3e4144", "#3e4144"],
+                     scale = 0.65,
+                     background = colors["color2"],
                 ),
                 widget.CurrentLayout( 
-                    background=["#5dc1b9","#5dc1b9"],
-                    foreground =["#3e4144", "#3e4144"],
+                    background = colors["color2"],
+                    foreground = colors["text"],
                 ),
-                widget.Sep(
-                    linewidth=0,
-                    padding=10,
-                    background=["#5dc1b9","#5dc1b9"],
-                ),
-                widget.TextBox(
-                    text = "󰇙", # nf-md-dots_vertical
-                    background=["#3e4144","#3e4144"],
-                    foreground=["#65727c","#65727c"],
-                    fontsize=18,
-                ),
+                separator("#5E81AC", "#81A1C1", "left"),
                 widget.Clock(
-                    background=["#338b85","#338b85"],
-                    foreground=["#3e4144","#3e4144"],
-                    format=" 󰸗 %d/%m/%Y 󰥔 %H:%M ", # nf-md-calendar_month, nf-md-clock
+                    background = colors["color1"],
+                    foreground = colors["text"],
+                    format="󰸗 %d/%m/%Y 󰥔 %H:%M ", # nf-md-calendar_month, nf-md-clock
                     ),
+                separator("#3e4144", "#5E81AC", "left"),
+                widget.Systray(
+                    background = colors["bar"],
+                ),
             ]
     return widget_list
 
 def init_widgets_screen1():
     widgets_screen1 = init_widgets_list()
-    del widgets_screen1[10] 
-    del widgets_screen1[9] # remove battery icon
     return widgets_screen1    
 
 def init_widgets_screen2():
     widgets_screen2 = init_widgets_list()
-    del widgets_screen2[13] # remove updates
-    del widgets_screen2[9] # remove updates
-    del widgets_screen2[6:8] # remove systray
+    del widgets_screen2[11:13] # remove systray
+    del widgets_screen2[5:8] # remove updates
     return widgets_screen2
 
 def init_screens():
     return [Screen(top=bar.Bar(
                 widgets=init_widgets_screen1(), 
                 opacity=0.9, 
-                size=24,  
-                background=["#3e4144","#3e4144"],
-                # margin= [5, 5, 0, 5],
+                size=26,  
+                #margin= [5, 5, 5, 5],
                 )),
             Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=0.9, size=24,background=["#3e4144","#3e4144"]))]
 

@@ -1,0 +1,12 @@
+{
+    "bar": ["#3e4144", "#3e4144"],
+    "text": ["#3e4144", "#3e4144"],
+    "color1": ["#5E81AC","#5E81AC"],
+    "color2": ["#81A1C1","#81A1C1"],
+    "color3": ["#8FBCBB", "#8FBCBB"],
+    "active": ["#3e4144", "#3e4144"],
+    "inactive": ["#5B686D", "#5B686D"],
+    "urgent": ["#b48ead", "#b48ead"],
+    "this_screen": ["#81A1C1", "#81A1C1"],
+    "other_screen": ["#5dc1b9", "#5dc1b9"]
+}
