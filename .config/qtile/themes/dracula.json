@@ -4,9 +4,9 @@
     "active": ["#3e4144", "#3e4144"],
     "inactive": ["#5B686D", "#5B686D"],
     "urgent": ["#b48ead", "#b48ead"],
-    "this_screen": ["#81A1C1", "#81A1C1"],
+    "this_screen": ["#50fa7b", "#50fa7b"],
     "other_screen": ["#5dc1b9", "#5dc1b9"],
-    "color1": ["#5E81AC","#5E81AC"],
-    "color2": ["#81A1C1","#81A1C1"],
-    "color3": ["#8FBCBB", "#8FBCBB"]
+    "color1": ["#8be9fd","#8be9fd"],
+    "color2": ["#50fa7b","#50fa7b"],
+    "color3": ["#ffb86c", "#ffb86c"]
 }
