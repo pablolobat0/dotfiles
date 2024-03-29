@@ -1,5 +1,5 @@
 from os import path
-import json
+import toml
 from getpass import getuser
 
 
@@ -7,7 +7,7 @@ from getpass import getuser
 config_dir = "/home/" + getuser() + "/.config/qtile"
 
 # Construct the path to the JSON file within the folder
-json_file_path = path.join(config_dir, "themes", "nord.json")
+json_file_path = path.join(config_dir, "themes", "nord.toml")
 
 with open(json_file_path, "r") as file:
-    colors = json.load(file)
+    colors = toml.load(file)

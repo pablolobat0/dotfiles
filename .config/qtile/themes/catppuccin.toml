@@ -1,0 +1,29 @@
+[bar]
+  bar = ["#4c4f69", "#4c4f69"]
+
+[text]
+  text = ["#4c4f69", "#4c4f69"]
+
+[active]
+  active = ["#4c4f69", "#4c4f69"]
+
+[inactive]
+  inactive = ["#5B686D", "#5B686D"]
+
+[urgent]
+  urgent = ["#b48ead", "#b48ead"]
+
+[this_screen]
+  this_screen = ["#dd7878", "#dd7878"]
+
+[other_screen]
+  other_screen = ["#5dc1b9", "#5dc1b9"]
+
+[color1]
+  color1 = ["#dc8a78", "#dc8a78"]
+
+[color2]
+  color2 = ["#dd7878", "#dd7878"]
+
+[color3]
+  color3 = ["#e64553", "#e64553"]

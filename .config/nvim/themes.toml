@@ -1,0 +1,10 @@
+[kanagawa]
+plugin = "rebelot/kanagawa.nvim"
+
+[nord]
+plugin = "shaunsingh/nord.nvim"
+
+[dracula]
+plugin = "dracula/vim"
+
+

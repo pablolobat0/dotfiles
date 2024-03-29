@@ -1,0 +1,34 @@
+[hack]
+  hack = [
+    "Hack NF",
+    "Hack NF",
+    "Hack NF"
+  ]
+
+[ubuntu]
+  ubuntu = [
+    "UbuntuMono Nerd Font",
+    "UbuntuMono Nerd Font",
+    "UbuntuMono Nerd Font"
+  ]
+
+[mononoki]
+  mononoki = [
+    "mononoki Nerd Font",
+    "mononoki Nerd Font",
+    "mononoki Nerd Font"
+  ]
+
+[agave]
+  agave = [
+    "agave Nerd Font",
+    "agave Nerd Font",
+    "agave Nerd Font"
+  ]
+
+[jetbrains]
+  jetbrains = [
+    "JetBrains Mono ExtraBold Nerd Font",
+    "JetBrains Mono Medium Nerd Font",
+    "JetBrains Mono Medium Nerd Font"
+  ]
