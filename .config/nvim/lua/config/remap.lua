@@ -2,20 +2,27 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader>Y", "\"+Y")
+-- Copy paste
+vim.keymap.set("n", "<leader>y", '"+y')
+vim.keymap.set("v", "<leader>y", '"+y')
+vim.keymap.set("n", "<leader>Y", '"+Y')
 
--- Fugitive
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
+-- Vertical moves
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
--- UndoTree
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+-- Search moves
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 
 -- Indenting
 vim.keymap.set("v", "<", "<gv") -- Shift Indentation to Left
 vim.keymap.set("v", ">", ">gv") -- Shift Indentation to Right
 
 -- Comments
-vim.api.nvim_set_keymap("n", "<C-k>", "gtc", { noremap = false })
-vim.api.nvim_set_keymap("v", "<C-k>", "goc", { noremap = false })
+vim.api.nvim_set_keymap("n", "<leader>c", "gtc", { noremap = false })
+vim.api.nvim_set_keymap("v", "<leader>c", "goc", { noremap = false })
+
+-- Split window
+vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
+vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
