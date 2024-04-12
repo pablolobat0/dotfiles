@@ -23,7 +23,8 @@ sudo pacman -Syu node
 ### Dependency for Other Plugins
 
 - [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
-
+- [folke/neodev.nvim](https://github.com/folke/neodev.nvim)
+- [folke/neoconf.nvim](https://github.com/folke/neoconf.nvim)
 
 ### Navigation
 
@@ -31,10 +32,11 @@ sudo pacman -Syu node
 - [ThePrimeagen/harpoon](https://github.com/ThePrimeagen/harpoon/tree/harpoon2): Mark and navigate between files
 - [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator): Navigation between Neovim and Tmux
 
-### LSP 
+### LSP
 
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim): Install LSPs, formatters and linters
 - [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim): Bridge between mason and lspconfig
+- [WhoIsSethDaniel/mason-tool-installer.nvim](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim): Ensure that some linters and formatter are installed
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): Easy way to configure lsp servers
 - [onsails/lspkind.nvim](https://github.com/onsails/lspkind.nvim)
 
@@ -44,16 +46,12 @@ sudo pacman -Syu node
 - [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp): Smart code autocompletion with lsp
 - [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
 - [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path)
-- [hrsh7th/cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline)
 - [saadparwaiz1/cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip): Luasnip Completion
 
 ### Snippets
 
 - [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)
-
-### Notifications
-
-- [j-hui/fidget.nvim](https://github.com/j-hui/fidget.nvim): Notifications UI for Neovim and LSP
+- [rafamadriz/friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
 
 ### Diagnostics
 
@@ -85,3 +83,4 @@ sudo pacman -Syu node
 - [xiyaowong/transparent.nvim](https://github.com/xiyaowong/transparent.nvim): Transparency
 - [kyazdani42/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons): Icons
 - [nvim-lualine](https://github.com/nvim-lualine/lualine.nvim): Better statusline
+

@@ -12,7 +12,6 @@ return {
 			typescript = { "eslint_d" },
 			svelte = { "eslint_d" },
 			python = { "flake8" },
-			c = { "cpplint" },
 			html = { "htmlhint" },
 		}
 

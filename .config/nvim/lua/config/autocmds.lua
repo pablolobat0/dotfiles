@@ -1,10 +1,11 @@
-local lsp_group = vim.api.nvim_create_augroup("LspGroup", {})
+-- auto-format on save
+local lsp_group = vim.api.nvim_create_augroup("LspFormattingGroup", {})
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = lsp_group,
 	callback = function(e)
 		local opts = { buffer = e.buf }
-		vim.keymap.set("n", "gd", function()
+		vim.keymap.set("n", "gd", function() -- Go to the definition
 			vim.lsp.buf.definition()
 		end, opts)
 		vim.keymap.set("n", "K", function()
