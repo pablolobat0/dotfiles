@@ -5,24 +5,34 @@ from libqtile import bar
 
 def init_widgets_screen1():
     widgets_screen1 = init_widgets_list()
+    del widgets_screen1[7]  # remove battery
     return widgets_screen1
 
 
 def init_widgets_screen2():
     widgets_screen2 = init_widgets_list()
-    del widgets_screen2[11:12]  # remove systray
-    del widgets_screen2[5:7]  # remove updates
+    del widgets_screen2[13:15]  # remove systray
+    del widgets_screen2[6]  # remove updates
     return widgets_screen2
 
 
 def init_screens():
-    return [Screen(top=bar.Bar(
-        widgets=init_widgets_screen1(),
-        opacity=0.9,
-        size=26,
-        # margin= [5, 5, 5, 5],
-    )),
-        Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=0.9, size=24, background=["#3e4144", "#3e4144"]))]
+    return [
+        Screen(
+            top=bar.Bar(
+                widgets=init_widgets_screen1(),
+                opacity=0.9,
+                size=26,
+            )
+        ),
+        Screen(
+            top=bar.Bar(
+                widgets=init_widgets_screen2(),
+                opacity=0.9,
+                size=26,
+            )
+        ),
+    ]
 
 
 # 2 monitors

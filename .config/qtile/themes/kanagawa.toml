@@ -1,29 +1,29 @@
 [bar]
-  bar = ["#1f1f28", "#1f1f28"]
+  bar = ["#727169", "#727169"]
 
 [text]
-  text = ["#dcd7ba", "#dcd7ba"]
+  text = ["#3e4144", "#3e4144"]
 
 [active]
   active = ["#3e4144", "#3e4144"]
 
 [inactive]
-  inactive = ["#c8c093", "#c8c093"]
+  inactive = ["#6e6d64", "#6e6d64"]
 
 [urgent]
   urgent = ["#c34043", "#c34043"]
 
 [this_screen]
-  this_screen = ["#7e9cd8", "#7e9cd8"]
+  this_screen = ["#938AA9", "#938AA9"]
 
 [other_screen]
   other_screen = ["#76946a", "#76946a"]
 
 [color1]
-  color1 = ["#6a9589", "#6a9589"]
+  color1 = ["#8059be", "#8059be"]
 
 [color2]
-  color2 = ["#957fb8", "#957fb8"]
+  color2 = ["#9383bb", "#9383bb"]
 
 [color3]
-  color3 = ["#8FBCBB", "#8FBCBB"]
+  color3 = ["#E6C384", "#E6C384"]

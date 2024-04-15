@@ -5,7 +5,7 @@ layout_conf = {
     "border_focus": "#d5ffff",
     "border_normal": "#338b85",
     "border_width": 2,
-    "margin": 10,
+    "margin": 5,
 }
 
 layouts = [
