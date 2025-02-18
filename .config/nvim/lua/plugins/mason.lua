@@ -21,23 +21,16 @@ return {
 		})
 
 		mason_lspconfig.setup({
-			-- list of servers for mason to install
 			ensure_installed = {
-				"tsserver",
-				"html",
-				"cssls",
 				"lua_ls",
 				"pyright",
+				"rust_analyzer",
 			},
 		})
 
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
-				"black", -- python formatter
-				"flake8", -- python linter
-				"eslint_d",
 			},
 		})
 	end,

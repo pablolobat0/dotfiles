@@ -26,3 +26,6 @@ vim.api.nvim_set_keymap("v", "<leader>c", "goc", { noremap = false })
 -- Split window
 vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
+
+-- Source a file
+vim.keymap.set("n", "<space><space>s", "<cmd>source %<CR>")

@@ -5,7 +5,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
-		{ "folke/neodev.nvim", opts = {} },
+		{ "folke/lazydev.nvim", opts = {} },
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -14,22 +14,23 @@ return {
 
 		local capabilities = cmp_lsp.default_capabilities()
 
-		local diagnostic_signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = "" }
+		local diagnostic_signs = { Error = " ", Warn = " ", Hint = " ", Info = "" }
 		for type, icon in pairs(diagnostic_signs) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
 		mason_lspconfig.setup_handlers({
-			function(server_name) -- default handler (optional)
-				lspconfig[server_name].setup({
+			["clangd"] = function()
+				lspconfig["clangd"].setup({
 					capabilities = capabilities,
+					filetypes = { "c, cuda" },
 				})
 			end,
-			["tsserver"] = function()
-				lspconfig["tsserver"].setup({
+			["pyright"] = function()
+				lspconfig["pyright"].setup({
 					capabilities = capabilities,
-					filetypes = { "javascript", "typescript" },
+					filetypes = { "python" },
 				})
 			end,
 			["lua_ls"] = function()

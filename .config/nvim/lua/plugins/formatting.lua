@@ -5,17 +5,22 @@ return {
 		local conform = require("conform")
 
 		conform.setup({
+			formatters = {
+				clang_format = {
+					prepend_args = { "--style=file", "--fallback-style=LLVM" },
+				},
+				shfmt = {
+					prepend_args = { "-i", "4" },
+				},
+				my_rustfmt = {
+					command = "cargo fmt",
+				},
+			},
 			formatters_by_ft = {
-				javascript = { "prettierd" },
-				typescript = { "prettierd" },
-				css = { "prettierd" },
-				html = { "prettierd" },
-				json = { "prettierd" },
-				yaml = { "prettierd" },
-				markdown = { "prettierd" },
 				lua = { "stylua" },
 				python = { "black" },
 				c = { "clang-format" },
+				rust = { "my_rustfmt" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
