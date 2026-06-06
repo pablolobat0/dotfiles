@@ -21,6 +21,7 @@ vim.opt.smartcase = true
 -- Appearance
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.cursorline = true
 vim.termguicolors = true
 
 vim.opt.scrolloff = 8

@@ -1,8 +1,8 @@
 [hack]
   hack = [
-    "Hack NF",
-    "Hack NF",
-    "Hack NF"
+    "Hack Nerd Font",
+    "Hack Nerd Font",
+    "Hack Nerd Font",
   ]
 
 [ubuntu]
@@ -28,7 +28,7 @@
 
 [jetbrains]
   jetbrains = [
-    "JetBrains Mono ExtraBold Nerd Font",
-    "JetBrains Mono Medium Nerd Font",
-    "JetBrains Mono Medium Nerd Font"
+    "JetBrainsMono Nerd Font",
+    "JetBrainsMono Nerd Font",
+    "JetBrainsMono Nerd Font",
   ]

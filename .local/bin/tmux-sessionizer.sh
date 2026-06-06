@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
 	selected=$1
 else
-	selected=$(find ~/Documentos/Uni ~/Documentos/Python ~/Documentos/Programacion -mindepth 1 -maxdepth 2 -type d | fzf)
+	selected=$(find ~/Documentos/Uni ~/Documentos/Programacion -mindepth 1 -maxdepth 2 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then

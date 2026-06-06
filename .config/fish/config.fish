@@ -19,3 +19,11 @@ bind \cF custom_ctrl_f
 
 # Prompt
 starship init fish | source
+uv generate-shell-completion fish | source
+
+# opencode
+fish_add_path /home/pablo/.opencode/bin
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/home/pablo/.local/bin" $PATH

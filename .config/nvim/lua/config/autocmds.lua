@@ -4,7 +4,7 @@ local lsp_group = vim.api.nvim_create_augroup("LspFormattingGroup", {})
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = lsp_group,
 	callback = function(e)
-		local opts = { buffer = e.buf }
+		local opts = { buffer = e.buf, silent = true }
 		vim.keymap.set("n", "gd", function() -- Go to the definition
 			vim.lsp.buf.definition()
 		end, opts)
@@ -23,17 +23,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>vrr", function()
 			vim.lsp.buf.references()
 		end, opts)
-		vim.keymap.set("n", "<leader>vrn", function()
-			vim.lsp.buf.rename()
-		end, opts)
+		vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
 		vim.keymap.set("i", "<C-h>", function()
 			vim.lsp.buf.signature_help()
 		end, opts)
 		vim.keymap.set("n", "[d", function()
-			vim.diagnostic.goto_next()
+			vim.diagnostic.jump({ count = -1, float = true })
 		end, opts)
 		vim.keymap.set("n", "]d", function()
-			vim.diagnostic.goto_prev()
+			vim.diagnostic.jump({ count = 1, float = true })
 		end, opts)
 	end,
 })
